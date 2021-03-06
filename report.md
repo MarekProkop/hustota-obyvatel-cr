@@ -18,7 +18,7 @@ Když se teď při volnočasových aktivitách musíme zdržovat na území své
 
 Bylo by fajn, kdyby závisel -- hodně obyvatel by mělo k dispozici velkou plochu a málo obyvatel malou. Je tomu tak?
 
-Podle tohoto grafu počet obyvatel s rozlohou obce stoupá, jenže to vypadá, že to hodně ovlivňuje pár obcí s největším počtem obyvatel.
+Podle tohoto grafu počet obyvatel s rozlohou obce stoupá, jenže to vypadá, že výsledek hodně ovlivňuje pár obcí s největším počtem obyvatel.
 
 ![](report_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
@@ -26,7 +26,7 @@ Když odfiltruju obce nad 500 tisíc obyvatel (čili Prahu), vapdá to takhle:
 
 ![](report_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
-Z toho je mj. vidět, že většina obcí má do 50 tisíc obyvatel a do 100 km² rozlohy. Tak to takhle vyfiltruju a dostanu:
+Z toho je mj. vidět, že většina obcí má do 50 tisíc obyvatel a do 100 km² rozlohy. Když vyfiltruju jen ty, dostanu:
 
 ![](report_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
@@ -39,6 +39,20 @@ Kolik obyvatel připadá na jeden kilometr čtvereční nebo kolik plochy má k 
 A odpověď nevypadá tak špatně. Ve většině obcí připadá na kilometr čtvereční maximálně 200 obyvatel a ve většině z té většiny dokonce jen maximálně 100 obyvatel.
 
 ![](report_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+Opět je ale vidět, že je rozdělení obcí podle velikosti velmi nerovnoměrné. Malých obcí je moc, velkých málo. Zkusil jsem proto rozdělit obce do skupin podle počtu obyvatel a zobrazit rozložení hustoty v těchto velikostních skupinách.
+
+![](report_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+Z toho ale moc vidět není, tak snad pomůže boxplot:
+
+![](report_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+Jo, to už vypadá líp, na první pohled je vidět, že hustota roste s počtem obyvatel a zároveň má ve větších městech větší rozptyl. Medián hustoty obcí s 5K až 100K obyvateli je okolo 300, většina obcí nad 100K má hustotu obyvatel nad 1000. Detaily malých obcí se ale schovají v měřítku, takže ještě zkusím logaritmickou osu y:
+
+![](report_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+Tady už je dobře vidět, že nejmenší obca mají medián hustoty pod 30.
 
 ## Žebříčky
 
