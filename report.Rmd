@@ -1,0 +1,87 @@
+---
+title: "Kolik plochy mají k dispozici obyvatelé obcí ČR"
+author: "Marek Prokop"
+date: "6 3 2021"
+output: 
+  html_document: 
+    keep_md: yes
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+source("./obce-obyvatele-plocha.R")
+```
+
+# Závisí počet obyvatel na rozloze obce?
+
+Bylo by fajn, kdyby závisel -- hodně obyvatel by mělo k dispozici velkou plochu a málo obyvatel malou. Je tomu tak?
+
+Podle tohoto grafu počet obyvatel s rozlohou obce stoupá, jenže to vypadá, že to hodně ovlivňuje pár obcí s největším počtem obyvatel.
+
+```{r}
+hustota %>% 
+  ggplot(aes(x = rozloha, y = pocet_obyvatel)) +
+  geom_point() +
+  geom_smooth()
+```
+
+Když odfiltruju obce nad 500 tisíc obyvatel (čili Prahu), vapdá to takhle:
+
+```{r}
+hustota %>% 
+  filter(pocet_obyvatel < 500000) %>% 
+  ggplot(aes(x = rozloha, y = pocet_obyvatel)) +
+  geom_point() +
+  geom_smooth()
+```
+
+Z toho je mj. vidět, že většina obcí má do 50 tisíc obyvatel a do 100 km² rozlohy. Tak to takhle vyfiltruju a dostanu:
+
+```{r}
+hustota %>% 
+  filter(pocet_obyvatel < 50000, rozloha < 100) %>% 
+  ggplot(aes(x = rozloha, y = pocet_obyvatel)) +
+  geom_point() +
+  geom_smooth()
+```
+
+Jo, to už je asi pro většinu obcí (ne nutně pro většinu obyvatel) realističtější obrázek.
+
+# Hustota obyvatelstva v obcích
+
+Kolik obyvatel připadá na jeden kilometr čtvereční nebo kolik plochy má k dispozce jeden obyvatel. To je ta zásadní otázka.
+
+A odpověď nevypadá tak špatně. Ve většině obcí připadá na kilometr čtvereční maximálně 200 obyvatel a ve většině z té většiny dokonce jen maximálně 100 obyvatel.
+
+```{r}
+hustota %>% 
+  ggplot(aes(x = hustota)) +
+  geom_histogram(binwidth = 100)
+```
+
+# Top 10 poražených
+
+Ve kterých obcích je nejvíc obyvatel na kilometr čtvereční? Jsou to tyhle:
+
+```{r}
+hustota %>% 
+  slice_max(order_by = hustota, n = 10) %>% 
+  select(nazev_obce, pocet_obyvatel, rozloha, hustota)
+```
+
+# Top 10 vítězů
+
+A kde jsou na tom nejlépe a mají nejvíc místa na obyvatele? Šumava ftw!
+
+```{r}
+hustota %>% 
+  filter(pocet_obyvatel > 0) %>% 
+  slice_min(order_by = hustota, n = 10) %>% 
+  select(nazev_obce, pocet_obyvatel, rozloha, hustota)
+```
+
