@@ -10,7 +10,11 @@ output:
 
 
 
-# Závisí počet obyvatel na rozloze obce?
+# Kolik plochy mají k dispozici obyvatelé obcí ČR
+
+Když se teď při volnočasových aktivitách musíme zdržovat na území své obce, zajímalo mě, o jak velkou plochu vzhledem k počtu obyvatel obcí vlastně jde. Stáhl jsem si veřejná data a udělal takovou rychlou minianalýzu.
+
+## Závisí počet obyvatel na rozloze obce?
 
 Bylo by fajn, kdyby závisel -- hodně obyvatel by mělo k dispozici velkou plochu a málo obyvatel malou. Je tomu tak?
 
@@ -28,7 +32,7 @@ Z toho je mj. vidět, že většina obcí má do 50 tisíc obyvatel a do 100 km�
 
 Jo, to už je asi pro většinu obcí (ne nutně pro většinu obyvatel) realističtější obrázek.
 
-# Hustota obyvatelstva v obcích
+## Hustota obyvatelstva v obcích
 
 Kolik obyvatel připadá na jeden kilometr čtvereční nebo kolik plochy má k dispozce jeden obyvatel. To je ta zásadní otázka.
 
@@ -36,7 +40,9 @@ A odpověď nevypadá tak špatně. Ve většině obcí připadá na kilometr č
 
 ![](report_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
-# Top 10 poražených
+## Žebříčky
+
+### Top 10 poražených
 
 Ve kterých obcích je nejvíc obyvatel na kilometr čtvereční? Jsou to tyhle:
 
@@ -57,7 +63,7 @@ Ve kterých obcích je nejvíc obyvatel na kilometr čtvereční? Jsou to tyhle:
 
 </div>
 
-# Top 10 vítězů
+### Top 10 vítězů
 
 A kde jsou na tom nejlépe a mají nejvíc místa na obyvatele? Šumava ftw!
 
@@ -77,4 +83,8 @@ A kde jsou na tom nejlépe a mají nejvíc místa na obyvatele? Šumava ftw!
 |Kvilda           |            139|  45.20961| 3.0745675|
 
 </div>
+
+## Závěr
+
+Životní prostor mají teď obyvatelé ČR značně nerovný. Zatímco v obcích s nejmenší hustotou obyvatel připadají na kilometr čtvereční jen nízké jednotky lidí, v obcích s největší hustotou to je lidí přibližně tisíckrát víc.
 

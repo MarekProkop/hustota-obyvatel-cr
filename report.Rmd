@@ -17,7 +17,11 @@ knitr::opts_chunk$set(
 source("./obce-obyvatele-plocha.R")
 ```
 
-# Závisí počet obyvatel na rozloze obce?
+# Kolik plochy mají k dispozici obyvatelé obcí ČR
+
+Když se teď při volnočasových aktivitách musíme zdržovat na území své obce, zajímalo mě, o jak velkou plochu vzhledem k počtu obyvatel obcí vlastně jde. Stáhl jsem si veřejná data a udělal takovou rychlou minianalýzu.
+
+## Závisí počet obyvatel na rozloze obce?
 
 Bylo by fajn, kdyby závisel -- hodně obyvatel by mělo k dispozici velkou plochu a málo obyvatel malou. Je tomu tak?
 
@@ -52,7 +56,7 @@ hustota %>%
 
 Jo, to už je asi pro většinu obcí (ne nutně pro většinu obyvatel) realističtější obrázek.
 
-# Hustota obyvatelstva v obcích
+## Hustota obyvatelstva v obcích
 
 Kolik obyvatel připadá na jeden kilometr čtvereční nebo kolik plochy má k dispozce jeden obyvatel. To je ta zásadní otázka.
 
@@ -64,7 +68,9 @@ hustota %>%
   geom_histogram(binwidth = 100)
 ```
 
-# Top 10 poražených
+## Žebříčky
+
+### Top 10 poražených
 
 Ve kterých obcích je nejvíc obyvatel na kilometr čtvereční? Jsou to tyhle:
 
@@ -74,7 +80,7 @@ hustota %>%
   select(nazev_obce, pocet_obyvatel, rozloha, hustota)
 ```
 
-# Top 10 vítězů
+### Top 10 vítězů
 
 A kde jsou na tom nejlépe a mají nejvíc místa na obyvatele? Šumava ftw!
 
@@ -84,4 +90,8 @@ hustota %>%
   slice_min(order_by = hustota, n = 10) %>% 
   select(nazev_obce, pocet_obyvatel, rozloha, hustota)
 ```
+
+## Závěr
+
+Životní prostor mají teď obyvatelé ČR značně nerovný. Zatímco v obcích s nejmenší hustotou obyvatel připadají na kilometr čtvereční jen nízké jednotky lidí, v obcích s největší hustotou to je lidí přibližně tisíckrát víc.
 
