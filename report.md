@@ -52,7 +52,15 @@ Jo, to už vypadá líp, na první pohled je vidět, že hustota roste s počtem
 
 ![](report_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
-Tady už je dobře vidět, že nejmenší obca mají medián hustoty pod 30.
+Tady už je dobře vidět, že nejmenší obce mají medián hustoty pod 30.
+
+Nakonec ještě zkusím rozdělit obce na dvě skupiny s přibližně stejným celkovým počtem obyvatel. V první skupině jsou největší obce celkem s přibližně polovinou obyvatel ČR a v druhé skupině jsou nejmenší obce celkem s přibližě polovinou obyvetel ČR.
+
+![](report_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+
+Z grafu je vidět, že malé obce sice mají větší rozptyl hustoty a víc odlehlých hodnot směrem nahoru, ale typický obyvatel malé obce má kilometr čtvereční k dispozici s cca stovkou svých spoluobčanů, kdežto ve velkých obcích se na kilometru čtverečním mačká lidí několikanásobně víc.
+
+A jen pro zajímavost, víc než polovina občanů ČR žije jen ve 115 největších obcích z celkem 6258.
 
 ## Žebříčky
 

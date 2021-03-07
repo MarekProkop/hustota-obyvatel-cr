@@ -115,7 +115,22 @@ hustota %>%
   scale_y_continuous(trans = "log2")
 ```
 
-Tady už je dobře vidět, že nejmenší obca mají medián hustoty pod 30.
+Tady už je dobře vidět, že nejmenší obce mají medián hustoty pod 30.
+
+Nakonec ještě zkusím rozdělit obce na dvě skupiny s přibližně stejným celkovým počtem obyvatel. V první skupině jsou největší obce celkem s přibližně polovinou obyvatel ČR a v druhé skupině jsou nejmenší obce celkem s přibližě polovinou obyvetel ČR.
+
+```{r, fig.height=7}
+hustota %>% 
+  select(nazev_obce, pocet_obyvatel, hustota) %>% 
+  arrange(desc(pocet_obyvatel)) %>% 
+  mutate(skupina = ifelse(cumsum(pocet_obyvatel) <= sum(pocet_obyvatel) / 2, "velké", "malé")) %>%
+  ggplot(aes(x = skupina, y = hustota)) +
+  geom_boxplot()
+```
+
+Z grafu je vidět, že malé obce sice mají větší rozptyl hustoty a víc odlehlých hodnot směrem nahoru, ale typický obyvatel malé obce má kilometr čtvereční k dispozici s cca stovkou svých spoluobčanů, kdežto ve velkých obcích se na kilometru čtverečním mačká lidí několikanásobně víc.
+
+A jen pro zajímavost, víc než polovina občanů ČR žije jen ve 115 největších obcích z celkem `r nrow(hustota)`.
 
 ## Žebříčky
 
